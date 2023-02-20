@@ -12,7 +12,8 @@ import sys
 
 pg.init()
 pg.font.init()
-   
+
+# create a class for the Hangman (villain)
 class KillerHangman():
     def __init__(self, images, start_pos):
         #get screen rect:
@@ -39,6 +40,9 @@ class KillerHangman():
         self.timer = 0.0
         self.bullets = [ ]
         self.dead = False
+         
+    
+   # create a function for the hangman to move towards the player:
 
     def towardsplayer(self, player_rect):
         
@@ -259,17 +263,23 @@ def spawn_program_and_die(program, exit_code=0):
     
 #set screen size:
 screen = pg.display.set_mode((1280,720))
+
 #find screen rect:
 screen_rect = screen.get_rect()
+
 #add player:
 player = Player(screen_rect)
+
 #add killer hangman:
 HangmanImage = hangmanimage()
+
 #create an array for hangman so we can kill it:
 hangmanarr = []
+
 #set hangman start place:
 y = random.randint(-500, -100)
 x = random.randint(0, screen_rect.width)
+
 #create hangman
 hangmanarr.append(KillerHangman(HangmanImage, (x,y)))
 
